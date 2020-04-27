@@ -7,11 +7,11 @@ var logger = require('morgan');
 const mongoose = require ('mongoose')
 require ('dotenv').config()
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var UserRouter = require('./routes/User');
 const HeroesRouter = require ('./routes/heroesRouter')
 
 var app = express();
-mongodConnect = process.env.MONGOURI
+mongodConnect = process.env.DB_MONGO
 mongoose.connect(mongodConnect, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/user', UserRouter);
 app.use ('/heroes', HeroesRouter)
 
 module.exports = app;

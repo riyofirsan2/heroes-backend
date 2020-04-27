@@ -1,6 +1,6 @@
 const express = require ('express')
 const router = express.Router()
-const HeroesContainer = require ('../containers/HeroesContainer')
+const HeroesContainer = require ('../controllers/HeroesContainer')
 
 router.post('/post', HeroesContainer.create)
 router.get ('/get', HeroesContainer.getData)
